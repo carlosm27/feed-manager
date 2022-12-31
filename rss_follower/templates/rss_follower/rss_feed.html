@@ -1,0 +1,30 @@
+
+
+{% block content %}
+
+<body>
+
+    <div>
+        <h1> RSS Feed </h1>
+
+       <form method="GET" action="">
+            {% csrf_token %}
+            <h3>Enter any RSS Link</h3>
+            <div class="card-body">
+                <input type="text" class="form-control" name="rss_link">
+            </div>
+            <div>
+                <input type="submit" class="form-control">
+            </div>
+       </form>
+    </div>
+
+    <div class="feed">
+        {% for entry in entries%}
+            <div>{{ entry | safe }}</div>
+        {% endfor %}    
+    </div>
+
+</body>  
+
+{% endblock %}
