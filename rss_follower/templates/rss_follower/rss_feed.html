@@ -20,8 +20,8 @@
     </div>
 
     <div class="feed">
-        {% for entry in entries %}
-            <div>{{ entry }}</div>
+        {% for title, link in entries.items %}
+            <div><a href="{{ link }}">{{ title }}</a></div>
         {% endfor %}    
     </div>
 
