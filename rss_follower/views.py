@@ -9,6 +9,7 @@ def feed_view(request):
     if request.method == 'GET':
         link = request.GET.get("rss_link", "")
         entries_links = list_links(link)
+        print(entries_links)
         context['entries'] = entries_links
     return render(request, "rss_follower/rss_feed.html", context)    
 
@@ -55,6 +56,9 @@ def list_links(link: str):
     feed = feedparser.parse(link)
 
     lst = []
+    dict = {}
     for entry in feed['entries']:
-        lst.append(entry.links[0]['href'])
-    return lst
+        dict[entry.title] = entry.links[0]['href']
+    return dict
+
+    
