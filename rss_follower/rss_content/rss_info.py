@@ -16,7 +16,7 @@ class Rss_info:
         info_dict['link'] = self.link
 
         return info_dict
-        
+
 
     def last_entry_info(self):
         last_entry_dict = {}
@@ -29,9 +29,8 @@ class Rss_info:
 
 
     def list_links(self, link: str):
-        feed = feedparser.parse(link)
 
-        dict = {}
-        for entry in feed['entries']:
+        links_dict = {}
+        for entry in self.feed['entries']:
             dict[entry.title] = entry.links[0]['href']
-        return dict
+        return links_dict
