@@ -2,7 +2,7 @@ import feedparser
 from datetime import date
 
 class Rss_info:
-    def __init__(self, link):
+    def __init__(self, link:str):
         self.link = link
 
         self.feed = feedparser.parse(self.link)
@@ -28,9 +28,9 @@ class Rss_info:
         return last_entry_dict
 
 
-    def list_links(self, link: str):
+    def list_links(self):
 
         links_dict = {}
         for entry in self.feed['entries']:
-            dict[entry.title] = entry.links[0]['href']
+            links_dict[entry.title] = entry.links[0]['href']
         return links_dict
