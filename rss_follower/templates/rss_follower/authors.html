@@ -1,0 +1,19 @@
+
+
+{% block content %}
+
+<body>
+
+    <div>
+        <h1> List of Authors </h1>
+    </div>
+
+    <div class="feed">
+        {% for author in author_list %}
+            <div><a href="{{author}}"></a>{{ author }}</div>
+        {% endfor %}    
+    </div>
+
+</body>  
+
+{% endblock %}
