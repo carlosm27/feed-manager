@@ -23,7 +23,7 @@ class AuthorDetailView(DetailView):
 
 class AuthorListView(ListView):
     model = Author
-    queryset = list(Author.objects.values_list('name', flat=True))
+    queryset = Author.objects.all()
     context_object_name = 'author_list'
     template_name =  "rss_follower/authors.html"
 
