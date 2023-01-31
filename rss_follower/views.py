@@ -1,10 +1,31 @@
 from django.shortcuts import render, redirect
+from django.views.generic.detail import DetailView
+from django.views.generic import ListView
 import feedparser
 from .models import Author
 from .form import AuthorForm
 from .rss_content.rss_info import Rss_info
 # Create your views here.
 
+
+class AuthorDetailView(DetailView):
+    model = Author
+    
+    template_name = "rss_follower/author_detail.html"
+
+    def get_context_data(self, **kwargs):
+        queryset = Author.objects.values_list('rss_link', flat=True).get(pk=self.kwargs['pk'])
+        author = Rss_info(queryset)
+        context = super().get_context_data(**kwargs)
+        
+        context['articles'] = author.list_links()
+        return context    
+
+class AuthorListView(ListView):
+    model = Author
+    queryset = list(Author.objects.values_list('name', flat=True))
+    context_object_name = 'author_list'
+    template_name =  "rss_follower/authors.html"
 
 """
 Display all the articles from a RSS link.
