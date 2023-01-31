@@ -10,7 +10,7 @@
 
     <div class="feed">
         {% for author in authors %}
-            <div>{{ author.name }}</div>
+            <div><a href="{% url 'author-detail' author.id %}">{{ author.name }}</a></div>
         {% endfor %}    
     </div>
 
