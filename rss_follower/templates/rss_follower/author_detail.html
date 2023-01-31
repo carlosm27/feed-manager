@@ -1,0 +1,8 @@
+<h1>{{object.name}}</h1>
+
+
+<div class="feed">
+    {% for title, link in articles.items %}
+        <div><a href="{{ link }}">{{ title }}</a></div>
+    {% endfor %}    
+</div>
