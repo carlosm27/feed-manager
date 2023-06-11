@@ -19,6 +19,7 @@ class AuthorDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         
         context['articles'] = author.list_links()
+        context['img'] = author.list_img()
         return context    
 
 class AuthorListView(ListView):
