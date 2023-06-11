@@ -1,8 +1,28 @@
-<h1>{{object.name}}</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+  <link rel="stylesheet" type="text/css" href= "{% static 'css/author_detail.css' %}">
+</head>    
+    
 
 
-<div class="feed">
-    {% for title, link in articles.items %}
-        <div><a href="{{ link }}">{{ title }}</a></div>
-    {% endfor %}    
-</div>
+{% block content %}
+<body>
+    <h1>{{object.name}}</h1>
+    <div class="feed">
+        {% for title, link in articles.items %}
+
+            
+            {% for title, cover_image in img.items %}
+                <img src="{{ cover_image }}" alt="{{ title }}" width="500" 
+                height="300">
+                <li><a href="{{ link }}">{{ title }}</a></li>
+            {% endfor %}     
+
+        {% endfor %}    
+    </div>
+</body>
+
+{% endblock %}
+</html>
