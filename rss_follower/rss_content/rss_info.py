@@ -34,3 +34,21 @@ class Rss_info:
         for entry in self.feed['entries']:
             links_dict[entry.title] = entry.links[0]['href']
         return links_dict
+    
+
+    def list_img(self):
+        img_dict = {}
+        
+        for entry in self.feed['entries']:
+            if 'cover_image' in entry:
+                img_dict[entry.title] = entry['cover_image']
+            else:
+                img_dict[entry.title] = 'No cover image'
+        return img_dict  
+
+
+
+
+
+
+   
